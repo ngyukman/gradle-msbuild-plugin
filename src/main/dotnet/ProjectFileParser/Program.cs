@@ -11,21 +11,17 @@ namespace ProjectFileParser
         private static int Main(string[] args)
         {
             MSBuildCustomLocator.Register();
-
-            using (new MonoHack())
+            try
             {
-                try
-                {
-                    var customPropertiesText = Console.In.ReadToEnd();
-                    var obj = JObject.Parse(customPropertiesText);
-                    var result = Parse(args[0], obj);
-                    Console.WriteLine(result);
-                }
-                catch (Exception e)
-                {
-                    Console.Error.WriteLine("Error during project file parsing: {0}", e);
-                    return -1;
-                }
+                var customPropertiesText = Console.In.ReadToEnd();
+                var obj = JObject.Parse(customPropertiesText);
+                var result = Parse(args[0], obj);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine("Error during project file parsing: {0}", e);
+                return -1;
             }
             return 0;
         }

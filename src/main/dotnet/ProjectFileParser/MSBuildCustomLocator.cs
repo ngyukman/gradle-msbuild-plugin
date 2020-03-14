@@ -3,7 +3,7 @@ using System;
 
 namespace ProjectFileParser
 {
-    internal static class MSBuildCustomLocator
+    public static class MSBuildCustomLocator
     {
         public static void Register()
         {

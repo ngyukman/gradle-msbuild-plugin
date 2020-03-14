@@ -1,5 +1,9 @@
 # gradle-msbuild-plugin changelog
 
+# 4.0
+### Changed
+* Use dotnet core to parse project solutions
+
 # 3.7
 ### Fixed
 * Unzip binaries into temporaryDir of the task

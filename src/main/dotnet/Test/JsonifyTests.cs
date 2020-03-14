@@ -10,13 +10,12 @@ using System.Reflection;
 
 namespace ProjectFileParser_Tests
 {
-    [TestFixture]
     public class JsonifyTests
     {
         [SetUp]
         public void Setup()
         {
-            var monoHack = new MonoHack();
+            MSBuildCustomLocator.Register();
         }
 
         private string GetResourcePath(string relativePath)
@@ -30,7 +29,7 @@ namespace ProjectFileParser_Tests
             yield return new TestCaseData("Resources/visualstudio14.csproj", 3, 2, "visualstudio14");
         }
 
-        [TestCaseSource("ProjectData")]
+        [TestCaseSource(nameof(ProjectData))]
         public void Project_ToJson_Success(string relativePath, int referenceCount, int compileCount, string projectName)
         {
             var path = GetResourcePath(relativePath);
